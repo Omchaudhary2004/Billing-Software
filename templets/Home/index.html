@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f7f9fc;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .sidebar {
+      background-color: #ffffff;
+      width: 250px;
+      position: fixed;
+      height: 100%;
+      top: 0;
+      left: -250px; /* Initially hidden */
+      transition: 0.3s;
+      z-index: 1;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #333;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .content-area {
+      margin-left: 0;
+      padding: 20px;
+      background-color: #ffffff;
+      transition: margin-left 0.3s;
+    }
+    .dashboard-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .card-box {
+      background-color: #e3f2fd;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      flex: 1;
+    }
+    .card-box h5 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .card-box p {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .menu-button {
+      font-size: 16px;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .dashboard-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        left: 0; /* Show sidebar on smaller screens */
+        width: 200px;
+      }
+      .content-area {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h4>Menu</h4>
+    <a href="#">Dashboard</a>
+    <a href="/item_entry">Item Entry</a>
+    <a href="#">POS</a>
+    <a href="#">Stock Status</a>
+    <a href="#">Purchase</a>
+    <a href="#">Barcode Printing</a>
+    <a href="#">Income</a>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content-area">
+    <button class="menu-button" onclick="toggleSidebar()">Menu</button>
+    <div class="dashboard-title">Dashboard</div>
+    
+    <!-- Dashboard cards in a single line -->
+    <div class="dashboard-row">
+      <div class="card-box">
+        <h5>Today's Sales</h5>
+        <p>₹ 5000</p>
+      </div>
+      <div class="card-box">
+        <h5>Today's Profit</h5>
+        <p>₹ 2000</p>
+      </div>
+      <div class="card-box">
+        <h5>Today's Cost</h5>
+        <p>₹ 3000</p>
+      </div>
+      <div class="card-box">
+        <h5>Total Online Payment</h5>
+        <p>₹ 1000</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle Sidebar
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const contentArea = document.querySelector(".content-area");
+
+      // Check if sidebar is visible
+      if (sidebar.style.left === "0px") {
+        sidebar.style.left = "-250px";
+        contentArea.style.marginLeft = "0";
+      } else {
+        sidebar.style.left = "0px";
+        contentArea.style.marginLeft = "250px";
+      }
+    }
+  </script>
+
+</body>
+</html>
