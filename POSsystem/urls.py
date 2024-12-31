@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import tests
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home , name="hello" ),
     path('item_entry/', views.item_entry , name="item_entry" ),
-    path('/additem', views.add_item, name='add_item')
+    path('add_item', views.add_item, name="add_item"),
+    path('test', tests.as_view() , name='test'),
 ]
